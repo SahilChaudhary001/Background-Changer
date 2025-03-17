@@ -7,14 +7,14 @@ app = Flask(__name__)
 
 @app.route('/htop')
 def htop():
-    # Get system username
+   
     username = os.getenv("USER") or os.getenv("USERNAME") or "Unknown"
 
-    # Get current IST time
+   
     ist_time = datetime.datetime.utcnow() + datetime.timedelta(hours=5, minutes=30)
     ist_time_str = ist_time.strftime("%Y-%m-%d %H:%M:%S IST")
 
-    # Get top output
+  
     try:
         top_output = subprocess.check_output("top -bn1 | head -10", shell=True, text=True)
     except Exception as e:
